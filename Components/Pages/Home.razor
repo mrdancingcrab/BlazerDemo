@@ -1,0 +1,75 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+@* hello
+<select @bind="selectedOption">
+	<option value="Option 1">Option 1</option>
+	<option value="Option 2">Option 2</option>
+	<option value="Option 3">Option 3</option>
+</select>
+<p> You chose: @selectedOption</p>*@
+
+
+@*
+<EditForm Model="@person" OnValidSubmit="HandleSubmit">
+	<div>
+		<label>Name:</label>
+		<InputText @bind-Value="person.Name">""</InputText>
+	</div>
+
+	<div>
+		<label>Age:</label>
+		<InputNumber @bind-Value="person.Age" TValue="int">0</InputNumber>
+	</div>
+
+	<button type="submit">Submit</button>
+
+</EditForm>
+
+<p>@message</p>  *@
+
+<button @onclick="FetchData">"Click"</button>
+<ul>
+	@foreach(var item in myList)
+	{
+		<li>@item</li>
+	}
+</ul>
+
+
+@code{
+
+		/*
+		string selectedOption = "Option 1";
+
+		public string message = string.Empty;
+		public Person person = new Person();
+
+		public void HandleSubmit()
+			{
+			message = $"The form was sent {person.Name}, {person.Age}";
+		}
+
+		public class Person
+			{
+			public string Name { get; set; } = string.Empty;
+			public int Age { get; set; }
+		} */
+
+	public List<string> myList = new();
+
+	public async Task FetchData()
+	{
+		await Task.Delay(100);
+		myList = new() { "Data 1", "Data 2", "Data 3" };
+	}
+}
+
+
+
